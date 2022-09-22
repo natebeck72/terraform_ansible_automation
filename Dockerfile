@@ -21,7 +21,7 @@ RUN echo "===> Installing sudo to emulate normal OS behavior..."    && \
     mkdir -p /etc/ansible  && \
     echo 'localhost' > /etc/ansible/hosts &&\
     echo "===> Installing AWS-CLI..." && \
-    pip3 install awscli --upgrade --user && \
+    apk --no-cache add aws-cli && \
     echo "===> Installing Azure-CLI..." && \
     apk add gcc musl-dev python3-dev libffi-dev cargo make && \
     pip3 install azure-cli 
