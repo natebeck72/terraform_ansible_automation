@@ -42,10 +42,7 @@ RUN echo "===> Cloning ansible repo ..." && \
     ansible-galaxy collection install paloaltonetworks.panos && \
     pip3 install -r ~/.ansible/collections/ansible_collections/paloaltonetworks/panos/requirements.txt
 
-Run echo "===> Cloning Terraform Repo...."
-
-
-
-
-
-
+Run echo "===> Cloning Terraform Repo...." && \
+    git clone https://github.com/natebeck72/TF_POC_AutomationDocker.git && \
+    cd /TF_POC_AutomationDocker && \
+    terraform init
