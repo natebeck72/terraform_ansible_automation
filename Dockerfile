@@ -8,7 +8,7 @@ RUN echo "===> Installing sudo to emulate normal OS behavior ..."    && \
 RUN echo "===> Adding Python runtime ..."  && \
     apk --update add python3 py3-pip openssl ca-certificates  && \
     apk --update add --virtual build-depandancies \
-                python3-dev libffi-dev openssl-dev build-base && \
+                python3-dev libffi-dev libssh-dev openssl-dev build-base && \
     pip3 install --upgrade cffi
 
 RUN echo "===> Installing Ansible ..."  && \
@@ -57,7 +57,6 @@ RUN echo "===> Installing panos from ansible-galaxy ..." && \
 
 RUN echo "===> Installing other required ansible collections..." && \
     ansible-galaxy collection install ansible.netcommon && \
-    ansible-galaxy collection install ansible.utils && \
     pip3 install -r ~/.ansible/collections/ansible_collections/ansible/netcommon/requirements.txt && \
     pip3 install -r ~/.ansible/collections/ansible_collections/ansible/utils/requirements.txt 
 
