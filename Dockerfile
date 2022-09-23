@@ -2,14 +2,21 @@ FROM alpine:3.16
 
 ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 
+<<<<<<< HEAD
 RUN echo "===> Installing sudo to emulate normal OS behavior ..."    && \
     apk --update add sudo
 
 RUN echo "===> Adding Python runtime ..."  && \
+=======
+RUN echo "===> Installing sudo to emulate normal OS behavior..."    && \
+    apk --update add sudo
+RUN echo "===> Adding Python runtime..."  && \
+>>>>>>> 4676cf11023d85c96ce61a1331543bed8c73ecf8
     apk --update add python3 py3-pip openssl ca-certificates  && \
     apk --update add --virtual build-depandancies \
                 python3-dev libffi-dev openssl-dev build-base && \
     pip3 install --upgrade cffi
+<<<<<<< HEAD
 
 RUN echo "===> Installing Ansible ..."  && \
     pip3 install ansible
@@ -19,12 +26,30 @@ RUN echo "===> Installing handy tools ..." && \
     apk --update add sshpass openssh-client rsync git curl openssh
 
 RUN echo "===> Installing AWS-CLI ..." && \
+=======
+RUN echo "===> Installing Ansible..."  && \
+    pip3 install ansible 
+RUN echo "===> Installing handy tools" && \
+    pip3 install --upgrade pywinrm && \
+    apk --update add sshpass openssh-client rsync git curl openssh
+RUN echo "===> Removing package list..." && \
+    apk del build-depandancies && \
+    rm -rf /var/cache/apk/*
+RUN echo "===> Adding hosts for convenience..." && \
+    mkdir -p /etc/ansible  && \
+    echo 'localhost' > /etc/ansible/hosts
+RUN echo "===> Installing AWS-CLI..." && \
+>>>>>>> 4676cf11023d85c96ce61a1331543bed8c73ecf8
     apk --no-cache add aws-cli && \
     mkdir ~/.aws && \
     ln -s /credentials/config ~/.aws/config && \
     ln -s /credentials/credentials ~/.aws/credentials
+<<<<<<< HEAD
 
 RUN echo "===> Installing Azure-CLI ..." && \
+=======
+RUN echo "===> Installing Azure-CLI..." && \
+>>>>>>> 4676cf11023d85c96ce61a1331543bed8c73ecf8
     apk add gcc musl-dev python3-dev libffi-dev cargo make && \
     pip3 install azure-cli 
 
@@ -49,6 +74,7 @@ RUN echo "===> Installing Terraform ..."  && \
     rm -f terraform_${TERRAFORM_VERSION}_SHA256SUMS
 
 RUN echo "===> Cloning ansible repo ..." && \
+<<<<<<< HEAD
     git clone https://github.com/natebeck72/Ansible_poc_automation-docker.git
 
 RUN echo "===> Installing panos from ansible-galaxy ..." && \
@@ -62,6 +88,21 @@ RUN echo "===> Installing other required ansible collections..." && \
     pip3 install -r ~/.ansible/collections/ansible_collections/ansible/utils/requirements.txt 
 
 Run echo "===> Cloning Terraform Repo ..." && \
+=======
+    git clone https://github.com/natebeck72/Ansible_poc_automation-docker
+    
+RUN echo "===> Installing panos from ansible-galaxy" && \
+    ansible-galaxy collection install paloaltonetworks.panos && \
+    pip3 install -r ~/.ansible/collections/ansible_collections/paloaltonetworks/panos/requirements.txt
+
+RUN echo "===> Installing other required ansible collections ..." &&\
+    ansible-galaxy collection install ansible.netcommon && \
+    ansible-galaxy collection install ansible.utils && \
+    pip3 install -r ~/.ansible/collections/ansible_collections/ansible/netcommon/requirements.txt && \
+    pip3 install -r ~/.ansible/collections/ansisble_collections/ansible/utils/requirements.txt 
+
+RUN echo "===> Cloning Terraform Repo...." && \
+>>>>>>> 4676cf11023d85c96ce61a1331543bed8c73ecf8
     git clone https://github.com/natebeck72/TF_POC_AutomationDocker.git && \
     cd /TF_POC_AutomationDocker && \
     terraform init
