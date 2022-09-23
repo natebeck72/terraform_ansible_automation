@@ -6,9 +6,9 @@ RUN echo "===> Installing sudo to emulate normal OS behavior ..."    && \
     apk --update add sudo
 
 RUN echo "===> Adding Python runtime ..."  && \
-    apk --update add python3 py3-pip openssl ca-certificates  && \
+    apk --update add python3 py3-pip openssl ca-certificates libssh-dev && \
     apk --update add --virtual build-depandancies \
-                python3-dev libffi-dev libssh-dev openssl-dev build-base && \
+                python3-dev libffi-dev openssl-dev build-base && \
     pip3 install --upgrade cffi
 
 RUN echo "===> Installing Ansible ..."  && \
