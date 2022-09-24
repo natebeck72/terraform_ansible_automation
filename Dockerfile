@@ -16,6 +16,7 @@ RUN echo "===> Installing Ansible ..."  && \
 
 RUN echo "===> Installing handy tools ..." && \
     pip3 install --upgrade pywinrm && \
+    pip3 install requests-toolbelt && \
     apk --update add sshpass openssh-client rsync git curl openssh
 
 RUN echo "===> Installing AWS-CLI ..." && \
