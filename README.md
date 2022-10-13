@@ -5,6 +5,7 @@ This is the Docker container with Terraform/Ansible and the deployment/configura
 Instructions
 
 1. Download the latest version of the docker container from the docker hub 
+- docker pull nateb72/terraform_ansible_automation
 2. Start the docker container with a mounted volume (ie. I use a local directory that holds my variable files and I mount it to /credentials inside the container)
 3. Connect to the CLI
 4. Run the command "az login" and follow the prompt to log the user session into azure, once logged in it will show you the subscriptions you have access to.
