@@ -50,7 +50,7 @@ RUN echo "===> Installing Terraform ..."  && \
     rm -f terraform_${TERRAFORM_VERSION}_SHA256SUMS
 
 RUN echo "===> Cloning ansible repo ..." && \
-    git clone https://github.com/natebeck72/Ansible_poc_automation-docker.git
+    git clone --branch SASE_SE https://github.com/natebeck72/Ansible_poc_automation-docker.git
 
 RUN echo "===> Installing panos from ansible-galaxy ..." && \
     ansible-galaxy collection install paloaltonetworks.panos && \
@@ -62,6 +62,6 @@ RUN echo "===> Installing other required ansible collections..." && \
     pip3 install -r ~/.ansible/collections/ansible_collections/ansible/utils/requirements.txt 
 
 Run echo "===> Cloning Terraform Repo ..." && \
-    git clone https://github.com/natebeck72/TF_POC_AutomationDocker.git && \
+    git clone --branch SASE_SE https://github.com/natebeck72/TF_POC_AutomationDocker.git && \
     cd /TF_POC_AutomationDocker && \
     terraform init
