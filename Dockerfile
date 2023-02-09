@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.17.1
 
 ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 
@@ -38,7 +38,7 @@ RUN echo "===> Adding hosts for convenience ..." && \
     echo 'localhost' > /etc/ansible/hosts
 
 
-ENV TERRAFORM_VERSION=1.2.9
+ENV TERRAFORM_VERSION=1.3.7
 ENV TERRAFORM_SHA256SUM=0e0fc38641addac17103122e1953a9afad764a90e74daf4ff8ceeba4e362f2fb
 
 RUN echo "===> Installing Terraform ..."  && \
@@ -65,3 +65,5 @@ Run echo "===> Cloning Terraform Repo ..." && \
     git clone --branch SASE_SE https://github.com/natebeck72/TF_POC_AutomationDocker.git && \
     cd /TF_POC_AutomationDocker && \
     terraform init
+
+CMD ["/bin.sh"]
