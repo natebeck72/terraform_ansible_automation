@@ -39,10 +39,10 @@ RUN echo "===> Adding hosts for convenience ..." && \
 
 
 ENV TERRAFORM_VERSION=1.3.7
-ENV TERRAFORM_SHA256SUM=0e0fc38641addac17103122e1953a9afad764a90e74daf4ff8ceeba4e362f2fb
+ENV TERRAFORM_SHA256SUM=b8cf184dee15dfa89713fe56085313ab23db22e17284a9a27c0999c67ce3021e
 
 RUN echo "===> Installing Terraform ..."  && \
-    curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+    curl https://releases.hashicorp.com/terraform/terraform_${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     echo "${TERRAFORM_SHA256SUM}  terraform_${TERRAFORM_VERSION}_linux_amd64.zip" > terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
     sha256sum -cs terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
