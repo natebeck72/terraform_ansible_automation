@@ -37,6 +37,14 @@ RUN echo "===> Adding hosts for convenience ..." && \
     mkdir -p /etc/ansible  && \
     echo 'localhost' > /etc/ansible/hosts
 
+RUN echo "===>  Installing Rover ..." && \
+    wget https://github.com/im2nguyen/rover/releases/download/v0.3.3/rover_0.3.3_linux_amd64.zip && \
+    unzip rover_0.3.3_linux_amd64.zip  -d /bin && \
+    rm -f rover_0.3.3_linux_amd64.zip && \
+    mv /bin/rover_v0.3.3 /bin/rover && \
+    rm -f /bin/LICENSE && \
+    rm -f /bin/README.md
+
 
 ENV TERRAFORM_VERSION=1.2.9
 ENV TERRAFORM_SHA256SUM=0e0fc38641addac17103122e1953a9afad764a90e74daf4ff8ceeba4e362f2fb
