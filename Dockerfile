@@ -46,8 +46,8 @@ RUN echo "===>  Installing Rover ..." && \
     rm -f /bin/README.md
 
 
-ENV TERRAFORM_VERSION=1.2.9
-ENV TERRAFORM_SHA256SUM=0e0fc38641addac17103122e1953a9afad764a90e74daf4ff8ceeba4e362f2fb
+ENV TERRAFORM_VERSION=1.3.9
+ENV TERRAFORM_SHA256SUM=53048fa573effdd8f2a59b726234c6f450491fe0ded6931e9f4c6e3df6eece56
 
 RUN echo "===> Installing Terraform ..."  && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
