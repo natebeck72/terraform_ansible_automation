@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.17.2
 
 ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 
